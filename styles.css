@@ -1,0 +1,10 @@
+/* .play {
+    display: block;
+    background-color: lightgreen;
+    font-size: 36px;
+    margin-bottom: 20px;
+} */
+
+.rpsButtons button {
+    font-size: 16px;
+}
