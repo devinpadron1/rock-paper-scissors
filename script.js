@@ -28,7 +28,7 @@ function game() {
         }
         computerSelection = getComputerChoice();
     }
-    if (playerPoints = 5) {
+    if (playerPoints = 2) {
         return "You win the game!"
     }
     else {
@@ -69,3 +69,5 @@ function gameRound(playerLower, computerSelection) {
         }
     }
 }
+
+document.addEventListener("DOMContentLoaded", game);
