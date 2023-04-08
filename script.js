@@ -1,8 +1,9 @@
 // Simulates games until 5 wins are achieved.
 function game() {
-    playerPoints = 0;
-    computerPoints = 0;
-    while (playerPoints != 5 || computerPoints != 5) {
+    let playerPoints = 0;
+    let computerPoints = 0;
+    const ptsNeeded = 3;
+    while (true) {
         // Computer Selection
         function getComputerChoice() {
             const words = ["r", "p", "s"]; // r(ock), p(aper), s(cissors)
@@ -13,10 +14,11 @@ function game() {
         
         // Player Selection
         let playerSelection = prompt("Write r for rock, p for paper, or s for scissors.");
-        let playerLower = playerSelection.toLowerCase();
+        playerSelection = playerSelection.toLowerCase();
         
-        while (playerLower != "r" && playerLower != "p" && playerLower != "s") {
-            playerLower = prompt("Try again. Type r, p, or s.");
+        // Error prompt
+        while (playerSelection != "r" && playerSelection != "p" && playerSelection != "s") {
+            playerSelection = prompt("Try again. Type r, p, or s.");
         }
 
         let winner = gameRound(playerSelection, computerSelection);
@@ -26,33 +28,32 @@ function game() {
         else if (winner == playerSelection) {
             playerPoints++;
         }
-        computerSelection = getComputerChoice();
-    }
-    if (playerPoints = 2) {
-        return "You win the game!"
-    }
-    else {
-        return "You lose the game."
+        if (playerPoints == ptsNeeded) {
+            return "You win the game!"
+        }
+        else if (computerPoints == ptsNeeded) {
+            return "You lose the game."
+        }
     }
 }
 
 // Simulates one round of the game
-function gameRound(playerLower, computerSelection) {
-    if (playerLower == computerSelection) {
+function gameRound(playerSelection, computerSelection) {
+    if (playerSelection == computerSelection) {
         console.log("Draw!");
-    } else if (playerLower == "r") {
+    } else if (playerSelection == "r") {
         if (computerSelection == "s") {
             console.log("Rock beats Scissors. You win!");
-            return playerLower;
+            return playerSelection;
         }
         else {
             console.log("Paper beats Rock. You lose. :-(");
             return computerSelection;
         }
-    } else if (playerLower == "s") {
+    } else if (playerSelection == "s") {
         if (computerSelection == "p") {
             console.log("Scissors beat Paper. You win!");
-            return playerLower;
+            return playerSelection;
         }
         else {
             console.log("Rock beats Scissors. You lose. :-(");
@@ -61,7 +62,7 @@ function gameRound(playerLower, computerSelection) {
     } else { //if player selects paper
         if (computerSelection == "r") {
             console.log("Paper beats Rock. You win!");
-            return playerLower;
+            return playerSelection;
         }
         else {
             console.log("Scissors beat paper. You lose. :-(");
