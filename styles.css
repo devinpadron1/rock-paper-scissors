@@ -5,6 +5,10 @@
     margin-bottom: 20px;
 } */
 
+#result {
+    display: inline-block;
+}
+
 .rpsButtons button {
     font-size: 16px;
 }
