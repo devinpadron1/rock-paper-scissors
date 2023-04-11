@@ -16,6 +16,12 @@ img {
     width: 120px;
 }
 
+/* Result Properties */
+#result {
+    display: inline-block;
+}
+
+/* Play Button Properties */
 #play {
     display: inline-block;
     background-color: lightgreen;
@@ -23,19 +29,25 @@ img {
     margin-bottom: 20px;
 }
 
-#result {
-    display: inline-block;
+#play:hover {
+    background-color: rgba(144, 238, 144, 0.75);
 }
 
+
+/* Game buttons and score properties */
 .rpsButtons button,
 .score p {
     display: none;
 }
 
-.score {
-    display: inline-block;
-}
-
 .rpsButtons button {
     font-size: 16px;
+    background-color: transparent;
+    width: 80px;
+    height: 40px;
+    margin: 10px 0;
+}
+
+.rpsButtons button:hover {
+    background-color: #ccc;
 }

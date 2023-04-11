@@ -49,10 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (playerPoints == pointsToWin || computerPoints == pointsToWin) {
                 gameButtons.forEach(element => {
                     element.style.display = "none";
-                })                
+                })
+                playButton.style.display = "inline-block";
+                playButton.style.fontSize = "50px";
+                playButton.innerText = "PLAY AGAIN";               
             } if (playerPoints == pointsToWin) {
                 resultMessage("YOU WIN!");
-            } else {
+            } else if (computerPoints == pointsToWin) {
                 resultMessage("YOU LOSE");
             }
         })
@@ -66,9 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
         gameButtons.forEach(element => {
             element.style.display = "inline-block";
         })
+ 
+        // Make play dissapear and rest show up
         playButton.style.display = "none";
-        compScore.style.display = "inline-block";
-        myScore.style.display = "inline-block";
+        compScore.style.display = "block";
+        myScore.style.display = "block";
+
+        resultMessage(""); // Reset result message
+        
+        // Point reset
+        playerPoints = 0;
+        computerPoints = 0;
+        updateScores();
     })
 
     // Result Message
