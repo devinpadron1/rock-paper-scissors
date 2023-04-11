@@ -28,8 +28,12 @@ img {
 }
 
 .rpsButtons button,
-.score {
+.score p {
     display: none;
+}
+
+.score {
+    display: inline-block;
 }
 
 .rpsButtons button {

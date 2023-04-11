@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Points
     let playerPoints = 0;
     let computerPoints = 0;
+    const pointsToWin = 5;
     
     let myScore = document.getElementById("myScore");
     let compScore = document.getElementById("compScore");
@@ -44,6 +45,16 @@ document.addEventListener('DOMContentLoaded', () => {
             let computerSelection = getComputerChoice();
             gameRound(playerSelection, computerSelection);
             document.getElementById("cpuImage").src = getImage(computerSelection);
+
+            if (playerPoints == pointsToWin || computerPoints == pointsToWin) {
+                gameButtons.forEach(element => {
+                    element.style.display = "none";
+                })                
+            } if (playerPoints == pointsToWin) {
+                resultMessage("YOU WIN!");
+            } else {
+                resultMessage("YOU LOSE");
+            }
         })
     })
     
@@ -56,7 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
             element.style.display = "inline-block";
         })
         playButton.style.display = "none";
-        
+        compScore.style.display = "inline-block";
+        myScore.style.display = "inline-block";
     })
 
     // Result Message
