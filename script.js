@@ -1,15 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // Points
-    const counters = document.querySelectorAll('.score');
-    
     let playerPoints = 0;
     let computerPoints = 0;
+    
+    let myScore = document.getElementById("myScore");
+    let compScore = document.getElementById("compScore");
+    myScore.innerText = `Player score: ${playerPoints}`;
+    compScore.innerText = `Computer score: ${computerPoints}`;
 
-    function updateCounters () {
-        counters.forEach((counterElem) => {
-            counterElem.textContent = 'Counter ${playerPoints}';
-        })
+    function updateScores() {
+        myScore.innerText = `Player score: ${playerPoints}`;
+        compScore.innerText = `Computer score: ${computerPoints}`;
     }
 
     // Computer Selection
@@ -19,23 +21,43 @@ document.addEventListener('DOMContentLoaded', () => {
         return words[randomIndex];
     }
 
-    // Buttons
+    // Selection images
+    function getImage(selection) {
+        switch (selection) {
+            case 'rock':
+                return "images/rock.png";
+            case 'paper':
+                return "images/paper.png";
+            case 'scissors':
+                return "/images/scissors.png";
+        }
+    }
+
+    // Buttons - Rock, Paper, Scissors
     const buttons =  document.querySelectorAll('.rpsButtons button');
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-        let playerSelection = button.textContent;
-        playerSelection = playerSelection.toLowerCase();
-
-        let computerSelection = getComputerChoice();
-        gameRound(playerSelection, computerSelection);
+            let playerSelection = button.textContent;
+            playerSelection = playerSelection.toLowerCase();
+            document.getElementById("playerImage").src = getImage(playerSelection);
+            
+            let computerSelection = getComputerChoice();
+            gameRound(playerSelection, computerSelection);
+            document.getElementById("cpuImage").src = getImage(computerSelection);
         })
     })
-
-    // const playButton = document.querySelector('.play');
-    // playButton.addEventListener('click', () => {
-    //     game(playerSelection);
-    // });
-
+    
+    // Button - Play
+    const playButton = document.getElementById("play"); // assign button to a variable
+    const gameButtons = document.querySelectorAll(".rpsButtons button");
+    
+    playButton.addEventListener('click', () => {
+        gameButtons.forEach(element => {
+            element.style.display = "inline-block";
+        })
+        playButton.style.display = "none";
+        
+    })
 
     // Result Message
     function resultMessage(message) {
@@ -75,5 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     computerPoints++;
                 }
         }
+        updateScores();
     }
 })
