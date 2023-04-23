@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function getImage(selection) {
         switch (selection) {
             case 'rock':
-                return "images/rock.png";
+                return "/images/rock.png";
             case 'paper':
-                return "images/paper.png";
+                return "/images/paper.png";
             case 'scissors':
                 return "/images/scissors.png";
         }
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttons =  document.querySelectorAll('.rpsButtons button');
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            let playerSelection = button.textContent;
+            let playerSelection = button.dataset.text;
             playerSelection = playerSelection.toLowerCase();
             document.getElementById("playerImage").src = getImage(playerSelection);
             
@@ -95,6 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
         instructionsText.style.display = "none";
         compScore.style.display = "block";
         myScore.style.display = "block";
+
+        // Reset images
+        document.getElementById("playerImage").src = "";
+        document.getElementById("cpuImage").src = "";
 
         resultMessage(""); // Reset result message
         

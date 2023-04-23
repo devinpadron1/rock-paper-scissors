@@ -1,10 +1,14 @@
+/* * {
+    border: 2px solid red;
+} */
+
 #rpsBody {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 90vh;
-    background-color: rgb(45, 45, 45);
+    background-color: darkgray;
     font-family: monospace;
 }
 
@@ -72,6 +76,10 @@ h1 {
 
 
 /* Game buttons and score properties */
+.rpsButtons {
+    display: flex;
+}
+
 .rpsButtons button,
 .score p {
     display: none;
