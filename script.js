@@ -59,19 +59,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 resultMessage("YOU LOSE");
             }
         })
+
+        // Add image when hovering over each button
+        button.addEventListener('mouseenter', () => {
+            const img = document.createElement('img');
+            const buttonType = button.getAttribute('data-text').toLowerCase();
+            img.src = `/images/${buttonType}.png`;
+            img.classList.add('hover-image');
+            button.textContent = '';
+            button.appendChild(img);
+        })
+
+        // Add text when mouse leaves
+        button.addEventListener('mouseleave', () => {
+            const img = button.querySelector('.hover-image');
+            if (img) {
+                button.removeChild(img);
+                button.textContent = button.getAttribute('data-text');
+            }
+        })
     })
     
     // Button - Play
     const playButton = document.getElementById("play"); // assign button to a variable
     const gameButtons = document.querySelectorAll(".rpsButtons button");
+    const instructionsText = document.getElementById("instructions");
     
     playButton.addEventListener('click', () => {
         gameButtons.forEach(element => {
             element.style.display = "inline-block";
         })
  
-        // Make play dissapear and rest show up
+        // Make play and instructions dissapear and rest show up
         playButton.style.display = "none";
+        instructionsText.style.display = "none";
         compScore.style.display = "block";
         myScore.style.display = "block";
 

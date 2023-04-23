@@ -8,23 +8,26 @@
         <link rel="stylesheet" href="styles.css">
         <script src="script.js"></script>
     </head>
-    <body>
-        <div class="images">
+    <body id="rpsBody">
+        <h1>Rock Paper Scissors</h1>
+        <div id="stage-container">
+            <div id="instructions">First to 5 points wins.</div>
+            <div id="result"></div>
+            <!-- <img id="courtain" src="/images/courtain.png" alt="Courtain"></img> -->
             <img id="playerImage"></img>            
             <img id="cpuImage"></img>
+            <button id="play">PLAY</button>
         </div>
-        <div id="result"></div>
         <div class="hidden">
             <div class="rpsButtons">
-                <button>Rock</button>
-                <button>Paper</button>
-                <button>Scissors</button>
+                <button data-text="Rock">Rock</button>
+                <button data-text="Paper">Paper</button>
+                <button data-text="Scissors">Scissors</button>
             </div>
             <div class="score">
                 <p id="myScore"></p>
                 <p id="compScore"></p>
             </div>
         </div>
-        <button id="play">PLAY</button>
     </body>
 </html>

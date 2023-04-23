@@ -1,24 +1,53 @@
-body {
+#rpsBody {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 90vh;
+    background-color: rgb(45, 45, 45);
+    font-family: monospace;
 }
 
-.images {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
+h1 {
+    color: white;
+    font-size: 40px;
+    margin-bottom: 8px;
 }
 
-img {
-    width: 120px;
+#stage-container {
+    width: 500px;
+    height: 500px;
+    background-image: url("/images/stage.png");
+    background-size: contain;
+    border: 5px black solid;
+    position: relative;
 }
 
-/* Result Properties */
-#result {
-    display: inline-block;
+#courtain {
+    width: 100px;
+}
+
+#playerImage,
+#cpuImage {
+    width: 150px;
+    height: 150px;
+    position: absolute;    
+    top: 310px;
+}
+
+#playerImage {
+    left: 70px;
+}
+
+#cpuImage {
+    right: 70px;
+}
+
+/* Instruction Properties */
+#instructions {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: white;
 }
 
 /* Play Button Properties */
@@ -26,7 +55,15 @@ img {
     display: inline-block;
     background-color: lightgreen;
     font-size: 104px;
+    padding: 20px;
     margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+/* Result Properties */
+#result {
+    display: inline-block;
+    color: white;
 }
 
 #play:hover {
@@ -38,16 +75,24 @@ img {
 .rpsButtons button,
 .score p {
     display: none;
+    color: white;
 }
 
 .rpsButtons button {
     font-size: 16px;
-    background-color: transparent;
-    width: 80px;
-    height: 40px;
-    margin: 10px 0;
+    background-color: grey;
+    width: 100px;
+    height: 60px;
+    margin: 15px 10px;
+    border-radius: 10px;
 }
 
 .rpsButtons button:hover {
     background-color: #ccc;
+}
+
+/* Miscellaneous */
+.hover-image {
+    max-width: 100%;
+    max-height: 100%;
 }
