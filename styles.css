@@ -7,71 +7,75 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 90vh;
-    background-color: darkgray;
+    height: 97vh;
+    background-color: black;
     font-family: monospace;
+    color: white;
 }
 
 h1 {
-    color: white;
     font-size: 40px;
     margin-bottom: 8px;
 }
 
 #stage-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 500px;
     height: 500px;
     background-image: url("/images/stage.png");
     background-size: contain;
     border: 5px black solid;
-    position: relative;
 }
 
-#courtain {
-    width: 100px;
+#img-container {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    position: relative;
 }
 
 #playerImage,
 #cpuImage {
     width: 150px;
-    height: 150px;
-    position: absolute;    
-    top: 310px;
+    height: auto;
 }
 
-#playerImage {
-    left: 70px;
-}
-
-#cpuImage {
-    right: 70px;
-}
-
-/* Instruction Properties */
-#instructions {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
-    color: white;
+/* Curtain */
+#curtain {
+    width: 500px;
+    display: none;
+    top: 0px;
+    left: 0px;
 }
 
 /* Play Button Properties */
 #play {
     display: inline-block;
-    background-color: lightgreen;
+    background-color: rgba(255, 255, 255, 0.85);
     font-size: 104px;
+    width: 320px;
     padding: 20px;
     margin-bottom: 20px;
-    border-radius: 20px;
+    border-radius: 50px;
 }
 
 /* Result Properties */
 #result {
-    display: inline-block;
-    color: white;
+    text-align: center;
+    display: block;
+    font-size: 30px;
+    height: 100px;
+    width: 290px;
+    margin-bottom: 115px;
 }
 
 #play:hover {
-    background-color: rgba(144, 238, 144, 0.75);
+    color: white;
+    border: 2px solid white;
+    background-color: green;
 }
 
 
@@ -83,15 +87,23 @@ h1 {
 .rpsButtons button,
 .score p {
     display: none;
-    color: white;
+    font-size: 20px;
+}
+
+.score {
+    text-align: right;
+    margin-right: 90px;
 }
 
 .rpsButtons button {
     font-size: 16px;
+    font-weight: bold;
     background-color: grey;
     width: 100px;
     height: 60px;
     margin: 15px 10px;
+    border: 1px solid white;
+    color: white;
     border-radius: 10px;
 }
 
@@ -99,8 +111,26 @@ h1 {
     background-color: #ccc;
 }
 
+/* Footer */
+footer {
+   margin-top: auto;
+}
+
+p,
+a {
+    display: inline-block;
+}
+
+a {
+    color: white;
+}
+
 /* Miscellaneous */
 .hover-image {
     max-width: 100%;
     max-height: 100%;
 }
+
+button {
+    font-family: monospace;
+}  

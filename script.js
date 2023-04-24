@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Curtain
+    const curtain = document.getElementById("curtain");
+
     // Buttons - Rock, Paper, Scissors
     const buttons =  document.querySelectorAll('.rpsButtons button');
     buttons.forEach(button => {
@@ -43,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("playerImage").src = getImage(playerSelection);
             
             let computerSelection = getComputerChoice();
-            gameRound(playerSelection, computerSelection);
             document.getElementById("cpuImage").src = getImage(computerSelection);
+            gameRound(playerSelection, computerSelection);
 
             if (playerPoints == pointsToWin || computerPoints == pointsToWin) {
                 gameButtons.forEach(element => {
@@ -53,13 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 playButton.style.display = "inline-block";
                 playButton.style.fontSize = "50px";
                 playButton.innerText = "PLAY AGAIN";               
+                // Reset images
+                document.getElementById("playerImage").src = "";
+                document.getElementById("cpuImage").src = "";
             } if (playerPoints == pointsToWin) {
-                resultMessage("YOU WIN!");
+                resultMessage("YOU WIN THE GAME!");
             } else if (computerPoints == pointsToWin) {
-                resultMessage("YOU LOSE");
+                resultMessage("YOU LOSE THE GAME");
             }
         })
-
+            
         // Add image when hovering over each button
         button.addEventListener('mouseenter', () => {
             const img = document.createElement('img');
@@ -83,22 +89,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Button - Play
     const playButton = document.getElementById("play"); // assign button to a variable
     const gameButtons = document.querySelectorAll(".rpsButtons button");
-    const instructionsText = document.getElementById("instructions");
     
     playButton.addEventListener('click', () => {
         gameButtons.forEach(element => {
             element.style.display = "inline-block";
         })
  
-        // Make play and instructions dissapear and rest show up
+        // Make play dissapear and score show up
         playButton.style.display = "none";
-        instructionsText.style.display = "none";
         compScore.style.display = "block";
         myScore.style.display = "block";
-
-        // Reset images
-        document.getElementById("playerImage").src = "";
-        document.getElementById("cpuImage").src = "";
 
         resultMessage(""); // Reset result message
         
