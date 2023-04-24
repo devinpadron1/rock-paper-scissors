@@ -28,6 +28,7 @@ h1 {
     background-image: url("/images/stage.png");
     background-size: contain;
     border: 5px black solid;
+    overflow: hidden;
 }
 
 #img-container {
@@ -45,11 +46,31 @@ h1 {
 
 /* Curtain */
 #curtain {
-    width: 500px;
     display: none;
-    top: 0px;
-    left: 0px;
+    width: 500px;
+    position: absolute;
+    top: 110px;
 }
+
+#curtain.animated {
+    animation: flyInOut 1s ease-in-out 1 alternate;
+}
+
+@keyframes flyInOut {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 1;
+    }
+}
+
 
 /* Play Button Properties */
 #play {

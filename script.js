@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("cpuImage").src = getImage(computerSelection);
             gameRound(playerSelection, computerSelection);
 
+            curtain.classList.add('animated');
+
             if (playerPoints == pointsToWin || computerPoints == pointsToWin) {
                 gameButtons.forEach(element => {
                     element.style.display = "none";
@@ -85,7 +87,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
     })
+
+    function startTimeouts() {
+        // Make curtain dissapear after animation
+        setTimeout(() => {
+            curtain.style.display = "none";
+        }, 1000);
     
+        // Make text on screen disapear midway through animation
+        setTimeout(() => {
+            // Make play dissapear and score show up
+            playButton.style.display = "none";
+            compScore.style.display = "block";
+            myScore.style.display = "block";
+            resultMessage(""); // Reset result message
+        }, 500);
+    }
+
     // Button - Play
     const playButton = document.getElementById("play"); // assign button to a variable
     const gameButtons = document.querySelectorAll(".rpsButtons button");
@@ -94,14 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
         gameButtons.forEach(element => {
             element.style.display = "inline-block";
         })
- 
-        // Make play dissapear and score show up
-        playButton.style.display = "none";
-        compScore.style.display = "block";
-        myScore.style.display = "block";
 
-        resultMessage(""); // Reset result message
-        
+        // Show and trigger curtain animation
+        curtain.classList.add('animated');
+        curtain.style.display = "block";
+        requestAnimationFrame(startTimeouts);
+
         // Point reset
         playerPoints = 0;
         computerPoints = 0;
