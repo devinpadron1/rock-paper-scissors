@@ -25,7 +25,7 @@ h1 {
     min-height: 500px;
     background-repeat: no-repeat;
     background-size: auto 500px;
-    background-image: url("/images/stage.png");
+    background-image: url("images/stage.png");
     border: 5px black solid;
     overflow: hidden;
 }
