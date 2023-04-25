@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function getImage(selection) {
         switch (selection) {
             case 'rock':
-                return "/images/rock.png";
+                return "images/rock.png";
             case 'paper':
-                return "/images/paper.png";
+                return "images/paper.png";
             case 'scissors':
-                return "/images/scissors.png";
+                return "images/scissors.png";
         }
     }
 
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('mouseenter', () => {
             const img = document.createElement('img');
             const buttonType = button.getAttribute('data-text').toLowerCase();
-            img.src = `/images/${buttonType}.png`;
+            img.src = `images/${buttonType}.png`;
             img.classList.add('hover-image');
             button.textContent = '';
             button.appendChild(img);
