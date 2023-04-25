@@ -1,7 +1,3 @@
-/* * {
-    border: 2px solid red;
-} */
-
 #rpsBody {
     display: flex;
     flex-direction: column;
@@ -25,8 +21,11 @@ h1 {
     flex-direction: column;
     width: 500px;
     height: 500px;
+    min-width: 500px;
+    min-height: 500px;
+    background-repeat: no-repeat;
+    background-size: auto 500px;
     background-image: url("/images/stage.png");
-    background-size: contain;
     border: 5px black solid;
     overflow: hidden;
 }
@@ -35,7 +34,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     width: 400px;
-    position: relative;
+    padding-top: 10px;
 }
 
 #playerImage,
@@ -49,7 +48,7 @@ h1 {
     display: none;
     width: 500px;
     position: absolute;
-    top: 110px;
+    z-index: 1;
 }
 
 #curtain.animated {
@@ -74,23 +73,26 @@ h1 {
 
 /* Play Button Properties */
 #play {
-    display: inline-block;
     background-color: rgba(255, 255, 255, 0.85);
     font-size: 104px;
     width: 320px;
     padding: 20px;
-    margin-bottom: 20px;
     border-radius: 50px;
+}
+
+.fill {
+    width: 320px;
+    height: 160px;
 }
 
 /* Result Properties */
 #result {
     text-align: center;
-    display: block;
+    display: inline-block;
+    padding-top: 20px;
     font-size: 30px;
     height: 100px;
     width: 290px;
-    margin-bottom: 115px;
 }
 
 #play:hover {

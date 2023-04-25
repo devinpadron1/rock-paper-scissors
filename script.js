@@ -34,38 +34,75 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Curtain
+    // Curtain variable
     const curtain = document.getElementById("curtain");
+    
+    // Curtain animation
+    function startTimeouts() {
+        curtain.classList.add('animated');
+        curtain.style.display = "block";
 
+        // Make curtain dissapear after animation
+        setTimeout(() => {
+            curtain.style.display = "none";
+        }, 1000);
+    
+        // Make text on screen disapear midway through animation
+        setTimeout(() => {
+            // Make play dissapear and score show up
+            compScore.style.display = "block";
+            myScore.style.display = "block";
+        }, 500);
+    }
+
+    // Button disable
+    function disableButton() {
+        buttons.forEach((button) => {
+            button.disabled = true;
+        });
+    }
+
+    // Button enable
+    function enableButton() {
+        buttons.forEach((button) => {
+            button.disabled = false;
+        });
+    }
+    
     // Buttons - Rock, Paper, Scissors
     const buttons =  document.querySelectorAll('.rpsButtons button');
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            let playerSelection = button.dataset.text;
-            playerSelection = playerSelection.toLowerCase();
-            document.getElementById("playerImage").src = getImage(playerSelection);
+            // Curtain animation
+            startTimeouts();
             
-            let computerSelection = getComputerChoice();
-            document.getElementById("cpuImage").src = getImage(computerSelection);
-            gameRound(playerSelection, computerSelection);
+            // Pause and wait till curtain drops to apply changes.
+            setTimeout(() => {
+                disableButton();
 
-            curtain.classList.add('animated');
+                let playerSelection = button.dataset.text;
+                playerSelection = playerSelection.toLowerCase();
+                document.getElementById("playerImage").src = getImage(playerSelection);
+                
+                let computerSelection = getComputerChoice();
+                document.getElementById("cpuImage").src = getImage(computerSelection);
+                gameRound(playerSelection, computerSelection);
 
-            if (playerPoints == pointsToWin || computerPoints == pointsToWin) {
-                gameButtons.forEach(element => {
-                    element.style.display = "none";
-                })
-                playButton.style.display = "inline-block";
-                playButton.style.fontSize = "50px";
-                playButton.innerText = "PLAY AGAIN";               
-                // Reset images
-                document.getElementById("playerImage").src = "";
-                document.getElementById("cpuImage").src = "";
-            } if (playerPoints == pointsToWin) {
-                resultMessage("YOU WIN THE GAME!");
-            } else if (computerPoints == pointsToWin) {
-                resultMessage("YOU LOSE THE GAME");
-            }
+                if (playerPoints == pointsToWin || computerPoints == pointsToWin) {
+                    gameButtons.forEach(element => {
+                        element.style.display = "none";
+                    })
+                    playButton.style.display = "inline-block";
+                    playButton.style.fontSize = "50px";
+                    playButton.innerText = "PLAY AGAIN";               
+
+                } if (playerPoints == pointsToWin) {
+                    resultMessage("YOU WIN THE GAME!");
+                } else if (computerPoints == pointsToWin) {
+                    resultMessage("YOU LOSE THE GAME");
+                }
+                enableButton();
+            }, 500);
         })
             
         // Add image when hovering over each button
@@ -87,23 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
     })
-
-    function startTimeouts() {
-        // Make curtain dissapear after animation
-        setTimeout(() => {
-            curtain.style.display = "none";
-        }, 1000);
     
-        // Make text on screen disapear midway through animation
-        setTimeout(() => {
-            // Make play dissapear and score show up
-            playButton.style.display = "none";
-            compScore.style.display = "block";
-            myScore.style.display = "block";
-            resultMessage(""); // Reset result message
-        }, 500);
-    }
-
     // Button - Play
     const playButton = document.getElementById("play"); // assign button to a variable
     const gameButtons = document.querySelectorAll(".rpsButtons button");
@@ -112,11 +133,17 @@ document.addEventListener('DOMContentLoaded', () => {
         gameButtons.forEach(element => {
             element.style.display = "inline-block";
         })
-
+        
         // Show and trigger curtain animation
-        curtain.classList.add('animated');
-        curtain.style.display = "block";
         requestAnimationFrame(startTimeouts);
+        
+        setTimeout(() => {
+            resultMessage(""); // Reset result message
+            playButton.style.display = "none";
+            // Reset images
+            document.getElementById("playerImage").src = "";
+            document.getElementById("cpuImage").src = "";
+        }, 500);
 
         // Point reset
         playerPoints = 0;
