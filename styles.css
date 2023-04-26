@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 97vh;
+    min-height: 775px;
     background-color: black;
     font-family: monospace;
     color: white;
