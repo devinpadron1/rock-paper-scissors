@@ -3,7 +3,7 @@
 <img src="images/rpsCover.png" alt="Rock Paper Scissors Game screenshot" width="400"/>
 
 ## Live link
-http://padron.blog/rock-paper-scissors/
+http://devinpad.com/rock-paper-scissors/
 
 ## Overview
 This is a simple web-based game of rock, paper, scissors that I built using HTML, CSS, and JavaScript. 
